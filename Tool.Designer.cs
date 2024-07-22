@@ -33,6 +33,11 @@
             this.labelEmulatorState = new System.Windows.Forms.Label();
             this.pictureBoxState = new System.Windows.Forms.PictureBox();
             this.groupBoxConfig = new System.Windows.Forms.GroupBox();
+            this.richTextBoxControls = new System.Windows.Forms.RichTextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBoxScore = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBoxState = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.textBoxRound1Answer5 = new System.Windows.Forms.TextBox();
@@ -153,7 +158,7 @@
             this.textBox2Player3 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox2Player2 = new System.Windows.Forms.TextBox();
-            this.textBoxTeam2Score = new System.Windows.Forms.TextBox();
+            this.textBoxTeam1Score = new System.Windows.Forms.TextBox();
             this.textBox2Player1 = new System.Windows.Forms.TextBox();
             this.groupBoxTeam1 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -168,8 +173,8 @@
             this.textBox1Player1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxTeam1Name = new System.Windows.Forms.TextBox();
+            this.textBoxTeam2Score = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxTeam1Score = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonReset = new System.Windows.Forms.Button();
             this.textBoxRoundNumber = new System.Windows.Forms.TextBox();
@@ -177,11 +182,8 @@
             this.buttonLoadConfig = new System.Windows.Forms.Button();
             this.buttonSaveConfig = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBoxState = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBoxScore = new System.Windows.Forms.TextBox();
-            this.richTextBoxControls = new System.Windows.Forms.RichTextBox();
+            this.buttonConnToEmu = new System.Windows.Forms.Button();
+            this.checkBoxCanWriteToEmu = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxState)).BeginInit();
             this.groupBoxConfig.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -197,7 +199,7 @@
             // 
             // buttonPatch
             // 
-            this.buttonPatch.Location = new System.Drawing.Point(379, 12);
+            this.buttonPatch.Location = new System.Drawing.Point(422, 12);
             this.buttonPatch.Name = "buttonPatch";
             this.buttonPatch.Size = new System.Drawing.Size(110, 23);
             this.buttonPatch.TabIndex = 0;
@@ -245,6 +247,51 @@
             this.groupBoxConfig.TabIndex = 8;
             this.groupBoxConfig.TabStop = false;
             this.groupBoxConfig.Text = "Config";
+            // 
+            // richTextBoxControls
+            // 
+            this.richTextBoxControls.Location = new System.Drawing.Point(9, 103);
+            this.richTextBoxControls.Name = "richTextBoxControls";
+            this.richTextBoxControls.ReadOnly = true;
+            this.richTextBoxControls.Size = new System.Drawing.Size(115, 132);
+            this.richTextBoxControls.TabIndex = 62;
+            this.richTextBoxControls.Text = "";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 83);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(35, 13);
+            this.label17.TabIndex = 61;
+            this.label17.Text = "Score";
+            // 
+            // textBoxScore
+            // 
+            this.textBoxScore.Location = new System.Drawing.Point(47, 80);
+            this.textBoxScore.Name = "textBoxScore";
+            this.textBoxScore.Size = new System.Drawing.Size(39, 20);
+            this.textBoxScore.TabIndex = 60;
+            this.textBoxScore.Text = "1";
+            this.textBoxScore.TextChanged += new System.EventHandler(this.Config_CheckedChanged);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 57);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(32, 13);
+            this.label16.TabIndex = 59;
+            this.label16.Text = "State";
+            // 
+            // textBoxState
+            // 
+            this.textBoxState.Location = new System.Drawing.Point(61, 54);
+            this.textBoxState.Name = "textBoxState";
+            this.textBoxState.Size = new System.Drawing.Size(25, 20);
+            this.textBoxState.TabIndex = 58;
+            this.textBoxState.Text = "1";
+            this.textBoxState.TextChanged += new System.EventHandler(this.Config_CheckedChanged);
             // 
             // tabControl1
             // 
@@ -451,7 +498,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(497, 146);
+            this.tabPage2.Size = new System.Drawing.Size(452, 146);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Round 2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -620,7 +667,7 @@
             this.tabPage3.Controls.Add(this.textBoxRound3Answer3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(497, 146);
+            this.tabPage3.Size = new System.Drawing.Size(452, 146);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Round 3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -789,7 +836,7 @@
             this.tabPage4.Controls.Add(this.textBoxRound4Answer3);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(497, 146);
+            this.tabPage4.Size = new System.Drawing.Size(452, 146);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Round 4";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -958,7 +1005,7 @@
             this.tabPage5.Controls.Add(this.textBoxRound5Answer3);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(497, 146);
+            this.tabPage5.Size = new System.Drawing.Size(452, 146);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Round 5";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1131,7 +1178,7 @@
             this.tabPage6.Controls.Add(this.textBoxFinalPreAnswer3);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(497, 146);
+            this.tabPage6.Size = new System.Drawing.Size(452, 146);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Final";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1447,14 +1494,14 @@
             this.textBox2Player2.Text = "Team 2 Player 2";
             this.textBox2Player2.TextChanged += new System.EventHandler(this.Config_CheckedChanged);
             // 
-            // textBoxTeam2Score
+            // textBoxTeam1Score
             // 
-            this.textBoxTeam2Score.Location = new System.Drawing.Point(47, 20);
-            this.textBoxTeam2Score.Name = "textBoxTeam2Score";
-            this.textBoxTeam2Score.Size = new System.Drawing.Size(45, 20);
-            this.textBoxTeam2Score.TabIndex = 40;
-            this.textBoxTeam2Score.Text = "000";
-            this.textBoxTeam2Score.TextChanged += new System.EventHandler(this.Config_CheckedChanged);
+            this.textBoxTeam1Score.Location = new System.Drawing.Point(47, 19);
+            this.textBoxTeam1Score.Name = "textBoxTeam1Score";
+            this.textBoxTeam1Score.Size = new System.Drawing.Size(45, 20);
+            this.textBoxTeam1Score.TabIndex = 40;
+            this.textBoxTeam1Score.Text = "000";
+            this.textBoxTeam1Score.TextChanged += new System.EventHandler(this.Config_CheckedChanged);
             // 
             // textBox2Player1
             // 
@@ -1596,6 +1643,15 @@
             this.textBoxTeam1Name.Text = "Team 1 name";
             this.textBoxTeam1Name.TextChanged += new System.EventHandler(this.Config_CheckedChanged);
             // 
+            // textBoxTeam2Score
+            // 
+            this.textBoxTeam2Score.Location = new System.Drawing.Point(47, 20);
+            this.textBoxTeam2Score.Name = "textBoxTeam2Score";
+            this.textBoxTeam2Score.Size = new System.Drawing.Size(45, 20);
+            this.textBoxTeam2Score.TabIndex = 40;
+            this.textBoxTeam2Score.Text = "000";
+            this.textBoxTeam2Score.TextChanged += new System.EventHandler(this.Config_CheckedChanged);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -1604,15 +1660,6 @@
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 41;
             this.label3.Text = "Score";
-            // 
-            // textBoxTeam1Score
-            // 
-            this.textBoxTeam1Score.Location = new System.Drawing.Point(47, 19);
-            this.textBoxTeam1Score.Name = "textBoxTeam1Score";
-            this.textBoxTeam1Score.Size = new System.Drawing.Size(45, 20);
-            this.textBoxTeam1Score.TabIndex = 40;
-            this.textBoxTeam1Score.Text = "000";
-            this.textBoxTeam1Score.TextChanged += new System.EventHandler(this.Config_CheckedChanged);
             // 
             // label2
             // 
@@ -1672,56 +1719,34 @@
             this.buttonSaveConfig.UseVisualStyleBackColor = true;
             this.buttonSaveConfig.Click += new System.EventHandler(this.buttonSaveConfig_Click);
             // 
-            // label16
+            // buttonConnToEmu
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 57);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(32, 13);
-            this.label16.TabIndex = 59;
-            this.label16.Text = "State";
+            this.buttonConnToEmu.Location = new System.Drawing.Point(306, 12);
+            this.buttonConnToEmu.Name = "buttonConnToEmu";
+            this.buttonConnToEmu.Size = new System.Drawing.Size(110, 23);
+            this.buttonConnToEmu.TabIndex = 9;
+            this.buttonConnToEmu.Text = "Connect to Emu";
+            this.buttonConnToEmu.UseVisualStyleBackColor = true;
+            this.buttonConnToEmu.Click += new System.EventHandler(this.buttonConnToEmu_Click);
             // 
-            // textBoxState
+            // checkBoxCanWriteToEmu
             // 
-            this.textBoxState.Location = new System.Drawing.Point(61, 54);
-            this.textBoxState.Name = "textBoxState";
-            this.textBoxState.Size = new System.Drawing.Size(25, 20);
-            this.textBoxState.TabIndex = 58;
-            this.textBoxState.Text = "1";
-            this.textBoxState.TextChanged += new System.EventHandler(this.Config_CheckedChanged);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 83);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(35, 13);
-            this.label17.TabIndex = 61;
-            this.label17.Text = "Score";
-            // 
-            // textBoxScore
-            // 
-            this.textBoxScore.Location = new System.Drawing.Point(47, 80);
-            this.textBoxScore.Name = "textBoxScore";
-            this.textBoxScore.Size = new System.Drawing.Size(39, 20);
-            this.textBoxScore.TabIndex = 60;
-            this.textBoxScore.Text = "1";
-            this.textBoxScore.TextChanged += new System.EventHandler(this.Config_CheckedChanged);
-            // 
-            // richTextBoxControls
-            // 
-            this.richTextBoxControls.Location = new System.Drawing.Point(9, 103);
-            this.richTextBoxControls.Name = "richTextBoxControls";
-            this.richTextBoxControls.ReadOnly = true;
-            this.richTextBoxControls.Size = new System.Drawing.Size(115, 132);
-            this.richTextBoxControls.TabIndex = 62;
-            this.richTextBoxControls.Text = "";
+            this.checkBoxCanWriteToEmu.AutoSize = true;
+            this.checkBoxCanWriteToEmu.Location = new System.Drawing.Point(196, 16);
+            this.checkBoxCanWriteToEmu.Name = "checkBoxCanWriteToEmu";
+            this.checkBoxCanWriteToEmu.Size = new System.Drawing.Size(105, 17);
+            this.checkBoxCanWriteToEmu.TabIndex = 10;
+            this.checkBoxCanWriteToEmu.Text = "Can write to emu";
+            this.checkBoxCanWriteToEmu.UseVisualStyleBackColor = true;
+            this.checkBoxCanWriteToEmu.CheckedChanged += new System.EventHandler(this.checkBoxCanWriteToEmu_CheckedChanged);
             // 
             // Tool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 503);
+            this.Controls.Add(this.checkBoxCanWriteToEmu);
+            this.Controls.Add(this.buttonConnToEmu);
             this.Controls.Add(this.labelEmulatorState);
             this.Controls.Add(this.pictureBoxState);
             this.Controls.Add(this.buttonPatch);
@@ -1912,5 +1937,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox textBoxScore;
         private System.Windows.Forms.RichTextBox richTextBoxControls;
+        private System.Windows.Forms.Button buttonConnToEmu;
+        private System.Windows.Forms.CheckBox checkBoxCanWriteToEmu;
     }
 }

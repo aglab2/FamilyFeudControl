@@ -131,4 +131,50 @@ namespace Hacktice
                 && state.prints.SequenceEqual(this.state.prints);
         }
     }
+
+    public class JPlayer
+    {
+        public string name { get; set; }
+    };
+
+    public class JScore
+    {
+        public string score { get; set; }
+    };
+
+    public class JStatus
+    {
+        public JScore[] scores { get; set; }
+    };
+
+    public class JTeam
+    {
+        public string teamName { get; set; }
+        public JPlayer[] players { get; set; }
+    };
+
+    public class JAnswer
+    {
+        public string name { get; set; }
+        public string cost { get; set; }
+    };
+
+    public class JRound
+    {
+        public JAnswer[] answers { get; set; }
+    };
+
+    public class JFinalRound
+    {
+        public JAnswer[] answersInit { get; set; }
+        public JAnswer[] answersAfter { get; set; }
+    };
+
+    public class JConfig
+    {
+        public JStatus state { get; set; }
+        public JTeam[] teams { get; set; }
+        public JRound[] rounds { get; set; }
+        public JFinalRound final { get; set; }
+    }
 }
