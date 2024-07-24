@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using System.Text.Json;
+using static System.Windows.Forms.AxHost;
 
 namespace Hacktice
 {
@@ -289,7 +290,11 @@ namespace Hacktice
                 EmulatorState = State.INVALIDATED;
             }
 
-            _timer.Change(IsEmulatorReady() ? 30 : 1000, Timeout.Infinite);
+            bool ready = IsEmulatorReady();
+            SafeInvoke(delegate {
+                if (_timer is object)
+                    _timer.Change(ready ? 30 : 1000, Timeout.Infinite);
+            });
         }
 
         private void buttonPatch_Click(object sender, EventArgs e)
@@ -972,7 +977,8 @@ namespace Hacktice
             var config = MakeConfig();
             _wantToUpdateConfig = config;
             _config = config;
-            _timer.Change(0 /*now*/, Timeout.Infinite);
+            if (_timer is object)
+                _timer.Change(0 /*now*/, Timeout.Infinite);
         }
 
         private void buttonSaveConfig_Click(object sender, EventArgs e)
@@ -1043,7 +1049,8 @@ namespace Hacktice
                 var config = MakeConfig();
                 _wantToUpdateConfig = config;
                 _config = config;
-                _timer.Change(0 /*now*/, Timeout.Infinite);
+                if (_timer is object)
+                    _timer.Change(0 /*now*/, Timeout.Infinite);
             }
             catch(Exception)
             {
@@ -1121,6 +1128,10 @@ namespace Hacktice
                 handle.WaitOne();
                 _timer.Dispose();
                 _timer = null;
+                _stateValue = State.INVALIDATED;
+
+                pictureBoxState.BackColor = Color.DarkGray;
+                labelEmulatorState.Text = "Disconnected";
             }
         }
 

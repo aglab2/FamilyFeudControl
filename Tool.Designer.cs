@@ -212,9 +212,9 @@
             this.labelEmulatorState.AutoSize = true;
             this.labelEmulatorState.Location = new System.Drawing.Point(25, 17);
             this.labelEmulatorState.Name = "labelEmulatorState";
-            this.labelEmulatorState.Size = new System.Drawing.Size(165, 13);
+            this.labelEmulatorState.Size = new System.Drawing.Size(76, 13);
             this.labelEmulatorState.TabIndex = 3;
-            this.labelEmulatorState.Text = "No supported emulator is running.";
+            this.labelEmulatorState.Text = "Disconnected.";
             // 
             // pictureBoxState
             // 
